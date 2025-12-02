@@ -1,0 +1,229 @@
+/* Dancing Cat Container Styles */
+.dancing-cat-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.title {
+  font-size: 3rem;
+  color: white;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+  margin-bottom: 2rem;
+  font-weight: bold;
+  animation: titleBounce 2s ease-in-out infinite;
+}
+
+@keyframes titleBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Cat Wrapper */
+.cat-wrapper {
+  position: relative;
+  margin: 2rem 0;
+  will-change: transform;
+}
+
+.cat-image {
+  width: 200px;
+  height: 200px;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+  will-change: transform;
+}
+
+/* Dancing Animation */
+.cat-wrapper.dancing {
+  animation: dance 2s ease-in-out infinite;
+}
+
+.cat-wrapper.dancing .cat-image {
+  animation:
+    rotate 2s ease-in-out infinite,
+    bounce 1s ease-in-out infinite,
+    scale 2s ease-in-out infinite;
+}
+
+/* Keyframe Animations */
+@keyframes dance {
+  0%, 100% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(-20px) translateY(-10px);
+  }
+  50% {
+    transform: translateX(0) translateY(-20px);
+  }
+  75% {
+    transform: translateX(20px) translateY(-10px);
+  }
+}
+
+@keyframes rotate {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes scale {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Control Button */
+.control-button {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: 3px solid white;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.control-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.control-button:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.control-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive Design */
+
+/* Mobile Devices (Portrait) */
+@media (max-width: 480px) {
+  .dancing-cat-container {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cat-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .control-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  @keyframes dance {
+    0%, 100% {
+      transform: translateX(0) translateY(0);
+    }
+    25% {
+      transform: translateX(-10px) translateY(-5px);
+    }
+    50% {
+      transform: translateX(0) translateY(-10px);
+    }
+    75% {
+      transform: translateX(10px) translateY(-5px);
+    }
+  }
+}
+
+/* Tablets (Portrait and Landscape) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .cat-image {
+    width: 180px;
+    height: 180px;
+  }
+
+  .control-button {
+    padding: 0.9rem 1.8rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 769px) {
+  .cat-image {
+    width: 220px;
+    height: 220px;
+  }
+
+  .title {
+    font-size: 3.5rem;
+  }
+}
+
+/* Touch Device Support */
+@media (hover: none) and (pointer: coarse) {
+  .control-button:hover {
+    transform: none;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  .control-button:active {
+    transform: scale(0.95);
+  }
+}
+
+/* Landscape Orientation */
+@media (orientation: landscape) and (max-height: 600px) {
+  .dancing-cat-container {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .title {
+    font-size: 2rem;
+    margin-bottom: 0;
+    margin-right: 2rem;
+  }
+
+  .cat-wrapper {
+    margin: 0 1rem;
+  }
+}
